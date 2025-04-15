@@ -5,14 +5,17 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "generate-swagger": "node -e \"import('./src/app.js')\""
   },
   "type": "module",
   "dependencies": {
-    "express": "^4,18.2"
+    "express": "^4.18.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "swagger-jsdoc": "^6.0.0",
+    "swagger-ui-express": "^4.0.0"
   },
   "author": "",
   "license": "ISC"
