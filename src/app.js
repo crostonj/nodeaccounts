@@ -1,11 +1,11 @@
-const express = require('express');
-const userRoutes = require('./routes/userRoutes');
+import express from 'express';
+import userRoutes from './routes/userRoutes.js'; // Import the router directly
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/api/users', userRoutes());
+app.use('/api/users', userRoutes); // Use the router directly
 
 const PORT = process.env.PORT || 3000;
 
