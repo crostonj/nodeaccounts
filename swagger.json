@@ -107,8 +107,10 @@
       "put": {
         "summary": "Update a user by ID",
         "tags": [
-          "Users"
+          "Users",
+          "appreciated"
         ],
+        "deprecated": true,
         "parameters": [
           {
             "in": "path",
