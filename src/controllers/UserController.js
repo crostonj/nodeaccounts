@@ -1,17 +1,19 @@
 import UserService from '../services/userService.js';
 
 class UserController {
+    userService;
+
     constructor() {
         this.userService = new UserService();
     }
 
-    createUser(req, res) {
+    createUser = (req, res) => {
         const userData = req.body;
         const newUser = this.userService.createUser(userData);
         res.status(201).json(newUser);
     }
 
-    getUser(req, res) {
+    getUser = (req, res) => {
         const userId = parseInt(req.params.id, 10);
         const user = this.userService.getUser(userId);
         if (!user) {
@@ -20,7 +22,7 @@ class UserController {
         res.json(user);
     }
 
-    updateUser(req, res) {
+    updateUser = (req, res) => {
         const userId = parseInt(req.params.id, 10);
         const updatedData = req.body;
         const updatedUser = this.userService.updateUser(userId, updatedData);
@@ -30,7 +32,7 @@ class UserController {
         res.json(updatedUser);
     }
 
-    deleteUser(req, res) {
+    deleteUser = (req, res) => {
         const userId = parseInt(req.params.id, 10);
         const deletedUser = this.userService.deleteUser(userId);
         if (!deletedUser) {
@@ -39,7 +41,7 @@ class UserController {
         res.json(deletedUser);
     }
 
-    getAllUsers(req, res) {
+    getAllUsers = (req, res) =>{
         const users = this.userService.getAllUsers();
         res.json(users);
     }

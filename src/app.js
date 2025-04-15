@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/api/users', userRoutes); // Use the router directly
+app.use('/users', userRoutes); // Use the router directly
 
 const PORT = process.env.PORT || 3000;
 

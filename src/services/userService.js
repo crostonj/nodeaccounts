@@ -1,6 +1,9 @@
 class UserService {
     constructor() {
-        this.users = []; // In-memory storage for users
+       this.users = [
+            { id: 1, name: 'John Doe', email: 'john.doe@example.com' },
+            { id: 2, name: 'Jane Doe', email: 'jane.doe@example.com' }
+        ];
     }
 
     createUser(userData) {
