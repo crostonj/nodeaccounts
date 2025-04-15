@@ -73,6 +73,8 @@ class UserController {
      *     summary: Update a user by ID
      *     tags:
      *       - Users
+     *       - appreciated
+     *     deprecated: true
      *     parameters:
      *       - in: path
      *         name: id
