@@ -35,6 +35,11 @@ fs.writeFileSync('./swagger.json', JSON.stringify(swaggerSpec, null, 2));
 // Serve Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+// Health probe endpoint
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'UP', timestamp: new Date().toISOString() });
+});
+
 // Routes
 app.use('/users', userRoutes);
 
