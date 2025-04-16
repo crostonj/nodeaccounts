@@ -37,8 +37,8 @@ jobs:
           appSourcePath: ${{ github.workspace }}/DockerFile
           _dockerfilePathKey_: _dockerfilePath_
           registryUrl: docker.io
-          registryUsername: ${{ secrets.CROSTONNODETESTDENO001_REGISTRY_USERNAME }}
-          registryPassword: ${{ secrets.CROSTONNODETESTDENO001_REGISTRY_PASSWORD }}
+          registryUsername: ${{ secrets.DOCKER_USERNAME }}
+          registryPassword: ${{ secrets.DOCKER_PASSWORD }}
           containerAppName: croston-nodetestdeno-001
           resourceGroup: rg-raymartf-lab
           imageToBuild: crostonj/croston-nodetestdeno-001:${{ github.sha }}
