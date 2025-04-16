@@ -75,6 +75,9 @@ class UserController {
      *       - Users
      *       - appreciated
      *     deprecated: true
+     *     description: |
+     *       This endpoint is deprecated and will be removed in future versions. 
+     *       Please use the `/users/{id}/update` endpoint instead.
      *     parameters:
      *       - in: path
      *         name: id
