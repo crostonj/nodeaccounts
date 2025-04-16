@@ -106,9 +106,14 @@ class UserController {
         const userId = parseInt(req.params.id, 10);
         const updatedData = req.body;
         const updatedUser = this.userService.updateUser(userId, updatedData);
+
         if (!updatedUser) {
             return res.status(404).json({ message: 'User not found' });
         }
+
+        // Add a custom header to indicate deprecation
+        res.setHeader('X-Deprecation-Notice', 'This endpoint is deprecated and will be removed in future versions. Please use /users/{id}/update instead.');
+
         res.json(updatedUser);
     }
 
