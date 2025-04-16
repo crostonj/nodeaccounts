@@ -73,7 +73,7 @@ class UserController {
      *     summary: Update a user by ID
      *     tags:
      *       - Users
-     *       - appreciated
+     *       - Deprecated
      *     deprecated: true
      *     description: |
      *       This endpoint is deprecated and will be removed in future versions. 
