@@ -3,8 +3,11 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - 'swagger.json'
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
 

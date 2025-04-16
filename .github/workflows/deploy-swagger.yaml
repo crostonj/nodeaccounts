@@ -1,0 +1,36 @@
+name: Deploy Swagger to Azure API Management
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'swagger.json'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  deploy-swagger:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Log in to Azure
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.CROSTONNODETESTDENO001_AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.CROSTONNODETESTDENO001_AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.CROSTONNODETESTDENO001_AZURE_SUBSCRIPTION_ID }}
+
+      # Step 3: Import Swagger into Azure API Management
+      - name: Import Swagger to Azure APIM
+        run: |
+          az apim api import --resource-group ${{ secrets.APIM_RESOURCEGROUP }} \
+            --service-name ${{ secrets.AZURE_APIM_INSTANCE_NAME }} \
+            --path "nodeaccounts-api" \
+            --api-id "nodeaccounts-api" \
+            --specification-format "OpenApiJson" \
+            --specification-path "./swagger.json"
