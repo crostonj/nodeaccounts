@@ -114,6 +114,54 @@ class UserController {
 
     /**
      * @swagger
+     * /users/{id}/update:
+     *   put:
+     *     summary: Update a user by ID (v2)
+     *     tags:
+     *       - Users
+     *       - v2
+     *     description: |
+     *       This is the updated version of the `PUT /users/{id}` endpoint.
+     *       Use this endpoint for updating user details.
+     *     parameters:
+     *       - in: path
+     *         name: id
+     *         required: true
+     *         schema:
+     *           type: integer
+     *         description: The user ID
+     *     requestBody:
+     *       required: true
+     *       content:
+     *         application/json:
+     *           schema:
+     *             type: object
+     *             properties:
+     *               name:
+     *                 type: string
+     *               email:
+     *                 type: string
+     *               phone:
+     *                 type: string
+     *                 description: The user's phone number
+     *     responses:
+     *       200:
+     *         description: User updated successfully
+     *       404:
+     *         description: User not found
+     */
+    updateUserV2 = (req, res) => {
+        const userId = parseInt(req.params.id, 10);
+        const updatedData = req.body;
+        const updatedUser = this.userService.updateUser(userId, updatedData);
+        if (!updatedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(updatedUser);
+    };
+
+    /**
+     * @swagger
      * /users/{id}:
      *   delete:
      *     summary: Delete a user by ID
