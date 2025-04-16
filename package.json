@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "generate-swagger": "node -e \"import('./src/app.js')\""
+    "generate-swagger": "node src/swagger.js"
   },
   "type": "module",
   "dependencies": {
