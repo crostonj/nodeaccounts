@@ -111,6 +111,7 @@
           "appreciated"
         ],
         "deprecated": true,
+        "description": "This endpoint is deprecated and will be removed in future versions. \nPlease use the `/users/{id}/update` endpoint instead.\n",
         "parameters": [
           {
             "in": "path",
