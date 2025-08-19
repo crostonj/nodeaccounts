@@ -8,7 +8,6 @@ class UserController {
      *     summary: Update a user's first and last name by ID (v2)
      *     tags:
      *       - Users
-     *       - v2
      *     description: |
      *       Update only the first and last name of a user. This is a v2 endpoint.
      *     parameters:
