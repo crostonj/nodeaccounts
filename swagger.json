@@ -12,6 +12,53 @@
     }
   ],
   "paths": {
+    "/users/{id}/update-v2": {
+      "put": {
+        "summary": "Update a user's first and last name by ID (v2)",
+        "tags": [
+          "Users",
+          "v2"
+        ],
+        "description": "Update only the first and last name of a user. This is a v2 endpoint.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The user ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User's name updated successfully"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
     "/users": {
       "post": {
         "summary": "Create a new user",

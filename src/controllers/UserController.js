@@ -1,6 +1,52 @@
 import UserService from '../services/userService.js';
 
 class UserController {
+    /**
+     * @swagger
+     * /users/{id}/update-v2:
+     *   put:
+     *     summary: Update a user's first and last name by ID (v2)
+     *     tags:
+     *       - Users
+     *       - v2
+     *     description: |
+     *       Update only the first and last name of a user. This is a v2 endpoint.
+     *     parameters:
+     *       - in: path
+     *         name: id
+     *         required: true
+     *         schema:
+     *           type: integer
+     *         description: The user ID
+     *     requestBody:
+     *       required: true
+     *       content:
+     *         application/json:
+     *           schema:
+     *             type: object
+     *             properties:
+     *               firstName:
+     *                 type: string
+     *               lastName:
+     *                 type: string
+     *     responses:
+     *       200:
+     *         description: User's name updated successfully
+     *       404:
+     *         description: User not found
+     */
+    updateUserNameV2 = (req, res) => {
+        const userId = parseInt(req.params.id, 10);
+        const { firstName, lastName } = req.body;
+        if (!firstName || !lastName) {
+            return res.status(400).json({ message: 'firstName and lastName are required' });
+        }
+        const updatedUser = this.userService.updateUserNameV2(userId, firstName, lastName);
+        if (!updatedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(updatedUser);
+    }
     userService;
 
     constructor() {

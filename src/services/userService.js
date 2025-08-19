@@ -1,4 +1,15 @@
 class UserService {
+    // v2: update only first and last name
+    updateUserNameV2(userId, firstName, lastName) {
+        const userIndex = this.users.findIndex(user => user.id === userId);
+        if (userIndex === -1) return null;
+
+        // Store first and last name as separate fields, and update name field for compatibility
+        this.users[userIndex].firstName = firstName;
+        this.users[userIndex].lastName = lastName;
+        this.users[userIndex].name = `${firstName} ${lastName}`;
+        return this.users[userIndex];
+    }
     constructor() {
        this.users = [
             { id: 1, name: 'John Doe', email: 'john.doe@example.com' },
