@@ -1,0 +1,17 @@
+<policies>
+    <inbound>
+        <base />
+        <set-header name="ClientID" exists-action="override">
+            <value>$(client-id)</value>
+        </set-header>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>

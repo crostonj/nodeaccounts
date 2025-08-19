@@ -34,3 +34,13 @@ jobs:
             --api-id "nodeaccounts-api" \
             --specification-format "OpenApiJson" \
             --specification-path "./swagger.json"
+
+      # Step 4: Deploy API policy to Azure APIM
+      - name: Deploy API Policy
+        run: |
+          echo "Deploying API policy..."
+          az apim api policy update \
+            --resource-group "${{ secrets.APIM_RESOURCEGROUP }}" \
+            --service-name "${{ secrets.AZURE_APIM_INSTANCE_NAME }}" \
+            --api-id "nodeaccounts-api" \
+            --xml-content @policy/api-policy.xml
