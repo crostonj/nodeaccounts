@@ -51,7 +51,6 @@ The API will be available at `http://localhost:3000`.
 
 - `POST /users` - Create a new user
 - `GET /users/:id` - Retrieve a user by ID
-- `PUT /users/:id` - Update a user by ID (deprecated)
 - `PUT /users/:id/update` - Update a user by ID (v2)
 - `PUT /users/:id/update-v2` - Update a user's first and last name by ID (v2)
    - Request body:

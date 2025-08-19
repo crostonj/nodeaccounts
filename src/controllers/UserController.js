@@ -112,68 +112,16 @@ class UserController {
         res.json(user);
     }
 
-    /**
-     * @swagger
-     * /users/{id}:
-     *   put:
-     *     summary: Update a user by ID
-     *     tags:
-     *       - Users
-     *       - Deprecated
-     *     deprecated: true
-     *     description: |
-     *       This endpoint is deprecated and will be removed in future versions. 
-     *       Please use the `/users/{id}/update` endpoint instead.
-     *     parameters:
-     *       - in: path
-     *         name: id
-     *         required: true
-     *         schema:
-     *           type: integer
-     *         description: The user ID
-     *     requestBody:
-     *       required: true
-     *       content:
-     *         application/json:
-     *           schema:
-     *             type: object
-     *             properties:
-     *               name:
-     *                 type: string
-     *               email:
-     *                 type: string
-     *     responses:
-     *       200:
-     *         description: User updated successfully
-     *       404:
-     *         description: User not found
-     */
-    updateUser = (req, res) => {
-        const userId = parseInt(req.params.id, 10);
-        const updatedData = req.body;
-        const updatedUser = this.userService.updateUser(userId, updatedData);
-
-        if (!updatedUser) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        // Add a custom header to indicate deprecation
-        res.setHeader('X-Deprecation-Notice', 'This endpoint is deprecated and will be removed in future versions. Please use /users/{id}/update instead.');
-
-        res.json(updatedUser);
-    }
 
     /**
      * @swagger
      * /users/{id}/update:
-     *   put:
-     *     summary: Update a user by ID (v2)
-     *     tags:
-     *       - Users
-     *       - v2
-     *     description: |
-     *       This is the updated version of the `PUT /users/{id}` endpoint.
-     *       Use this endpoint for updating user details.
+    *   put:
+    *     summary: Update a user by ID
+    *     tags:
+    *       - Users
+    *     description: |
+    *       Use this endpoint for updating user details.
      *     parameters:
      *       - in: path
      *         name: id

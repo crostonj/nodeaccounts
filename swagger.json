@@ -151,52 +151,6 @@
           }
         }
       },
-      "put": {
-        "summary": "Update a user by ID",
-        "tags": [
-          "Users",
-          "Deprecated"
-        ],
-        "deprecated": true,
-        "description": "This endpoint is deprecated and will be removed in future versions. \nPlease use the `/users/{id}/update` endpoint instead.\n",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            },
-            "description": "The user ID"
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "User updated successfully"
-          },
-          "404": {
-            "description": "User not found"
-          }
-        }
-      },
       "delete": {
         "summary": "Delete a user by ID",
         "tags": [
@@ -225,12 +179,11 @@
     },
     "/users/{id}/update": {
       "put": {
-        "summary": "Update a user by ID (v2)",
+        "summary": "Update a user by ID",
         "tags": [
-          "Users",
-          "v2"
+          "Users"
         ],
-        "description": "This is the updated version of the `PUT /users/{id}` endpoint.\nUse this endpoint for updating user details.\n",
+        "description": "Use this endpoint for updating user details.\n",
         "parameters": [
           {
             "in": "path",
